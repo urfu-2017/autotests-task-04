@@ -1,0 +1,17 @@
+{
+  "name": "selenium-homework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "hermione",
+    "selenium:install": "selenium-standalone install",
+    "selenium": "selenium-standalone start"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hermione": "^0.65.2",
+    "selenium-standalone": "6.5.0"
+  }
+}
