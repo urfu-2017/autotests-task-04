@@ -1,5 +1,6 @@
 const assert = require('assert');
 const PO = require('../../page-object');
+// require('dotenv').config();
 
 describe('Проверка авторизации на Github:', () => {
     beforeEach(() =>  {
