@@ -1,22 +1,28 @@
 const assert = require('assert');
+const PO = require('../../page-object');
 
-describe('Проверка профиля в K1logram:', () => {
+describe('Проверка профиля в Kilogram:', () => {
     it('должен получить информацию профиля', async function () {
         const browser = this.browser;
 
         await browser.url('https://k1logram.now.sh');
-        await browser.waitForVisible('.loader-page__spinner', 5000, true);
-        await browser.click('.login-page__button');
+        await browser.waitForVisible(PO.kilogram.loader, 5000, true);
+        await browser.click(PO.kilogram.loginButton);
         const pageUrl = await browser.getUrl();
-        if (pageUrl.indexOf('https://github.com/login/oauth/authorize') + 1) {
-            await browser.waitForEnabled('#js-oauth-authorize-btn', 3000, true);
-            await browser.click('#js-oauth-authorize-btn');
+        if (pageUrl.includes('github.com/login/oauth/authorize')) {
+            await browser.waitForEnabled(PO.github.oauthAuthorizeBtn, 3000, true);
+            await browser.click(PO.github.oauthAuthorizeBtn);
         }
-        await browser.waitForVisible('.loader-page__spinner', 5000, true);
-        await browser.click('.hamburger__box');
-        await browser.click('.menu .menu__item:nth-child(2)');
+        else if (pageUrl.includes('github.com/login')) {
+            await browser.setValue(PO.github.login, process.env.GH_LOGIN);
+            await browser.setValue(PO.github.password, process.env.GH_PWD);
+            await browser.click(PO.github.signInBtn);
+        }
+        await browser.waitForVisible(PO.kilogram.loader, 5000, true);
+        await browser.click(PO.kilogram.menuButton);
+        await browser.click(PO.kilogram.profileInfo);
 
-        const actualNickname = await browser.getText('.profile__username');
+        const actualNickname = await browser.getText(PO.kilogram.profileLogin);
         assert.equal(actualNickname, '@' + process.env.GH_LOGIN.toLowerCase());
     });
 });
