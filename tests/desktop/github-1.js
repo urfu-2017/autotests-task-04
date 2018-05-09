@@ -11,7 +11,7 @@ describe('Проверка авторизации на Github:', () => {
     it('должен успешно авторизоваться', async function() {
         const browser = this.browser;
 
-        await browser.url('https://github.com/login');
+        await browser.url(PO.github.loginUrl);
         await browser.setValue(PO.github.login, process.env.GH_LOGIN);
         await browser.setValue(PO.github.password, process.env.GH_PWD);
         await browser.click(PO.github.signInBtn);
