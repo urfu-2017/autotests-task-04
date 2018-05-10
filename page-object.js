@@ -4,7 +4,7 @@ module.exports = {
         password: '#password',
         signInBtn: '[name=commit]',
         avatar: '.avatar',
-        logout: '..logout-form'
+        logout: '.logout-form'
     },
     kilogram: {
         loader: '.loader-page',
