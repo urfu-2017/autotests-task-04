@@ -1,5 +1,20 @@
-describe.skip('Проверка профиля в K1logram:', () => {
-    it('должен получить информацию профиля', async function () {
-        // Напиши свой код здесь
+const assert = require('assert');
+const PO = require('../../page-object');
+
+describe('Проверка чата:', () => {
+    it('логин в чате должен быть таким же, как и в гитхабе', async function () {
+        const browser = this.browser;
+        await browser.url('https://github.com/login');
+        await browser.setValue(PO.github.login, process.env.GH_LOGIN);
+        await browser.setValue(PO.github.password, process.env.GH_PWD);
+        await browser.click(PO.github.signInBtn);
+        await browser.url('https://k1logram.now.sh');
+        await browser.waitForVisible(PO.kilogram.loader, 5000, true);
+        await browser.click(PO.kilogram.login_button);
+        await browser.waitForVisible(PO.kilogram.loader, 5000, true);
+        await browser.click(PO.kilogram.menu);
+        await browser.click(PO.kilogram.profile);
+        const actual = await browser.getText(PO.kilogram.name);
+        assert.equal(actual, "@"+process.env.GH_LOGIN);
     });
 });

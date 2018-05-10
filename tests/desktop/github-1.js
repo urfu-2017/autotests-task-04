@@ -15,9 +15,9 @@ describe('Проверка авторизации на Github:', () => {
         await browser.setValue(PO.github.login, process.env.GH_LOGIN);
         await browser.setValue(PO.github.password, process.env.GH_PWD);
         await browser.click(PO.github.signInBtn);
-
         const actual = await browser.getUrl();
-
+        await browser.click(PO.github.avatar);
+        await browser.click(PO.github.logout);
         assert.equal(actual, 'https://github.com/');
     });
 });
