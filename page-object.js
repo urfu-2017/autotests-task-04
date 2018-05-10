@@ -2,7 +2,9 @@ module.exports = {
     github: {
         login: '#login_field',
         password: '#password',
-        signInBtn: '[name=commit]'
+        signInBtn: '[name=commit]',
+        avatar: '.avatar',
+        logout: '..logout-form'
     },
     kilogram: {
         loader: '.loader-page',
