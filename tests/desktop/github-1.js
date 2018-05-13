@@ -1,7 +1,7 @@
 const assert = require('assert');
 const PO = require('../../page-object');
 
-describe('Проверка авторизации на Github:', () => {
+describe.skip('Проверка авторизации на Github:', () => {
     beforeEach(() =>  {
         if (!(process.env.GH_LOGIN && process.env.GH_PWD)) {
             throw Error('В переменных окружения нет логина или пароля от Гитхаб')

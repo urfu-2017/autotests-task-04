@@ -8,7 +8,6 @@ module.exports = {
     },
 
     kilogram: {
-        button: '#js-oauth-authorize-btn',
         showProfile: 'div > a > img',
         nickname: 'img + div > div > a'
     }
