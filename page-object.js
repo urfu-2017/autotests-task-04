@@ -5,5 +5,10 @@ module.exports = {
         login: '#login_field',
         password: '#password',
         signInBtn: '[name=commit]'
+    },
+
+    kilogram: {
+        showProfile: 'div > a > img',
+        nickname: 'img + div > div > a'
     }
 };
