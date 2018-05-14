@@ -1,5 +1,6 @@
 const assert = require('assert');
 const PO = require('../../page-object');
+const profile = require('../../profile');
 
 describe('Проверка авторизации на Github:', () => {
     beforeEach(() =>  {
@@ -19,5 +20,9 @@ describe('Проверка авторизации на Github:', () => {
         const actual = await browser.getUrl();
 
         assert.equal(actual, 'https://github.com/');
+		
+		await browser.url('https://github.com/' + process.env.GH_LOGIN);
+		const name = await browser.getText(PO.github.profileName);
+		profile.name = name;
     });
 });

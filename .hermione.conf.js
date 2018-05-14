@@ -13,5 +13,5 @@ module.exports = {
         }
     },
 
-    gridUrl: `http://${process.env.USERNAME}:${process.env.ACCESSKEY}@hub-cloud.browserstack.com:80/wd/hub`
+    gridUrl: `http://${process.env.USERNAME}:${process.env.ACCESSKEY}@ondemand.saucelabs.com:80/wd/hub`
 };
