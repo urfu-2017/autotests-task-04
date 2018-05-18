@@ -6,8 +6,8 @@ class PageObject {
         this.homePageUrl = homePageUrl;
     }
 
-    async goTo(destinationUrl) {
-        await this.browser.url(`${this.homePageUrl}/${destinationUrl}`);
+    async goTo(pagePath) {
+        await this.browser.url(`${this.homePageUrl}/${pagePath}`);
     }
 
     async getCurrentUrl() {
